@@ -17,9 +17,10 @@
     }
 
     header {
-      background: #3a2c2c;
+      background: rgba(0, 0, 0, 0.4); /* شفافية فوق الخلفية */
       text-align: center;
       padding: 25px 10px;
+      backdrop-filter: blur(5px); /* يعطي لمسة ناعمة */
     }
 
     header img {
@@ -52,12 +53,13 @@
     }
 
     .item {
-      background: linear-gradient(145deg, #4e3b3b, #2f2222);
+      background: rgba(200, 200, 200, 0.85); /* لون رمادي ناعم شفاف */
       border-radius: 20px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
       text-align: center;
       padding: 20px;
       transition: transform 0.3s, box-shadow 0.3s;
+      color: #000; /* عشان النصوص تبان على الرمادي */
     }
 
     .item:hover {
@@ -75,20 +77,20 @@
 
     .item h2 {
       font-size: 20px;
-      color: #ffe7c2;
+      color: #222;
       margin: 8px 0 4px;
     }
 
     .item p {
       font-size: 15px;
-      color: #ccc;
+      color: #333;
       margin-bottom: 6px;
     }
 
     .price {
       font-weight: bold;
       font-size: 17px;
-      color: #e6b980;
+      color: #444;
       margin-top: 6px;
     }
   </style>

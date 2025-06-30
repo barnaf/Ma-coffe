@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منيو MA Cafe</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #2a1e1e;
+      color: #f5f5f5;
+      direction: rtl;
+    }
+
+    header {
+      background: #3a2c2c;
+      text-align: center;
+      padding: 25px 10px;
+    }
+
+    header img {
+      height: 110px;
+    }
+
+    .search-bar {
+      max-width: 600px;
+      margin: 25px auto 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      padding: 12px;
+      width: 85%;
+      border-radius: 10px;
+      border: none;
+      font-size: 17px;
+      outline: none;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .item {
+      background: linear-gradient(145deg, #4e3b3b, #2f2222);
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+    }
+
+    .item img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .item h2 {
+      font-size: 20px;
+      color: #ffe7c2;
+      margin: 8px 0 4px;
+    }
+
+    .item p {
+      font-size: 15px;
+      color: #ccc;
+      margin-bottom: 6px;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 17px;
+      color: #e6b980;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="شعار MA Cafe" />
+  </header>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="ابحث عن مشروب..." onkeyup="filterMenu()" />
+  </div>
+
+  <section class="menu" id="menu"></section>
+
+  <script>
+    let allItems = [];
+
+    function loadCSV() {
+      Papa.parse("menu.csv", {
+        download: true,
+        header: true,
+        complete: function(results) {
+          allItems = results.data;
+          renderMenu();
+        }
+      });
+    }
+
+    function renderMenu(filter = '') {
+      const menu = document.getElementById('menu');
+      menu.innerHTML = '';
+      allItems
+        .filter(item => item['الاسم'] && item['الاسم'].includes(filter))
+        .forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = `
+            <img src="${item['الصورة']}" alt="${item['الاسم']}">
+            <h2>${item['الاسم']}</h2>
+            <p>${item['المكونات']}</p>
+            <div class="price">${item['السعر']} ريال</div>
+          `;
+          menu.appendChild(div);
+        });
+    }
+
+    function filterMenu() {
+      const val = document.getElementById('searchInput').value.trim();
+      renderMenu(val);
+    }
+
+    window.addEventListener('DOMContentLoaded', loadCSV);
+  </script>
+</body>
+</html>

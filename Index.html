@@ -17,7 +17,7 @@
     }
 
     header {
-      background: none; /* بدون لون أو شفافية */
+      background: none;
       text-align: center;
       padding: 25px 10px;
     }
@@ -44,7 +44,7 @@
 
     .menu {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       padding: 30px 20px;
       max-width: 1200px;
@@ -52,7 +52,7 @@
     }
 
     .item {
-      background-color: #4a4a4a; /* رمادي فاخر مطفي */
+      background-color: #4a4a4a;
       border-radius: 20px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
       text-align: center;
@@ -67,11 +67,14 @@
     }
 
     .item img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 12px;
-      border-radius: 50%;
-      object-fit: cover;
+      width: 100%;
+      max-height: 200px;
+      border-radius: 16px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      background-color: #ffffff0d;
+      padding: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .item h2 {
@@ -96,7 +99,7 @@
 </head>
 <body>
   <header>
-    
+    <!-- تقدر تضيف لوجو هنا -->
   </header>
 
   <div class="search-bar">

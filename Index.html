@@ -44,17 +44,11 @@
 
     .menu {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* عمودين فقط في كل صف */
+      grid-template-columns: repeat(2, 1fr); /* دائمًا عمودين */
       gap: 20px;
       padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
-    }
-
-    @media (max-width: 768px) {
-      .menu {
-        grid-template-columns: 1fr; /* عمود واحد في الشاشات الصغيرة */
-      }
     }
 
     .item {

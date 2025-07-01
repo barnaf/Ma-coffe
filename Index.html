@@ -43,8 +43,9 @@
     }
 
     .menu {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
       padding: 30px 20px;
       max-width: 1200px;
@@ -52,11 +53,12 @@
     }
 
     .item {
-      background-color: rgba(0, 0, 0, 0.3); /* خلفية شفافة */
+      background-color: rgba(0, 0, 0, 0.25); /* شفافية للمربع */
       border-radius: 20px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
       text-align: center;
       padding: 20px;
+      width: 280px;
       transition: transform 0.3s, box-shadow 0.3s;
       color: #fff;
     }
@@ -77,23 +79,31 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
+    .item h2,
+    .item p,
+    .price {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 8px 10px;
+      border-radius: 10px;
+      margin: 5px auto;
+      width: fit-content;
+      max-width: 90%;
+    }
+
     .item h2 {
       font-size: 20px;
       color: #ffe7c2;
-      margin: 8px 0 4px;
     }
 
     .item p {
       font-size: 15px;
       color: #e0e0e0;
-      margin-bottom: 6px;
     }
 
     .price {
       font-weight: bold;
       font-size: 17px;
       color: #e6b980;
-      margin-top: 6px;
     }
   </style>
 </head>

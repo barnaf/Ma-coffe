@@ -77,31 +77,31 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
-    .item h2,
-    .item p,
-    .price {
+    .info-box {
       background-color: #f5e8d3;
       color: #000;
-      padding: 10px 15px;
-      border-radius: 12px;
-      margin: 10px auto;
-      font-weight: bold;
-      font-size: 17px;
-      width: fit-content;
-      max-width: 90%;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      border-radius: 14px;
+      padding: 15px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
 
-    .item h2 {
+    .info-box h2 {
       font-size: 20px;
+      margin: 0 0 10px;
+      font-weight: bold;
     }
 
-    .item p {
+    .info-box p {
+      margin: 0 0 8px;
       font-size: 15px;
     }
 
-    .price {
+    .info-box .price {
       font-size: 17px;
+      font-weight: bold;
+      color: #6d4c1c;
     }
   </style>
 </head>
@@ -140,9 +140,11 @@
           div.className = 'item';
           div.innerHTML = `
             <img src="${item['الصورة']}" alt="${item['الاسم']}">
-            <h2>${item['الاسم']}</h2>
-            <p>${item['المكونات']}</p>
-            <div class="price">${item['السعر']} ريال</div>
+            <div class="info-box">
+              <h2>${item['الاسم']}</h2>
+              <p>${item['المكونات']}</p>
+              <div class="price">${item['السعر']} ريال</div>
+            </div>
           `;
           menu.appendChild(div);
         });
